@@ -12,8 +12,18 @@ export default {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      heading: ['Space Grotesk', 'sans-serif'],
+      body: ['Inter', 'sans-serif'],
+    },
     extend: {
       colors: {
+        glow: "hsl(var(--glow))",
+        "glow-muted": "hsl(var(--glow-muted))",
+        "hero-bg": "hsl(var(--hero-bg))",
+        "hero-foreground": "hsl(var(--hero-foreground))",
+        "surface-dark": "hsl(var(--surface-dark))",
+        "surface-darker": "hsl(var(--surface-darker))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
