@@ -1,0 +1,105 @@
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About Us", path: "/about" },
+  { label: "Contact", path: "/contact" },
+];
+
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-hero-bg/80 border-b border-glow/10">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-lg bg-glow/20 border border-glow/40 flex items-center justify-center font-heading font-bold text-glow text-lg group-hover:bg-glow/30 transition-colors">
+            EA
+          </div>
+          <span className="font-heading font-semibold text-hero-foreground text-lg tracking-tight">
+            Enervate <span className="text-gradient">Analytics</span>
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`font-body text-sm tracking-wide transition-colors relative ${
+                location.pathname === item.path
+                  ? "text-glow"
+                  : "text-hero-foreground/70 hover:text-hero-foreground"
+              }`}
+            >
+              {item.label}
+              {location.pathname === item.path && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-glow rounded-full"
+                />
+              )}
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            className="px-5 py-2 rounded-lg bg-glow/10 border border-glow/30 text-glow text-sm font-medium hover:bg-glow/20 transition-all"
+          >
+            Get in Touch
+          </Link>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-hero-foreground"
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden overflow-hidden bg-hero-bg/95 backdrop-blur-xl border-t border-glow/10"
+          >
+            <div className="px-6 py-4 flex flex-col gap-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setOpen(false)}
+                  className={`font-body text-sm py-2 ${
+                    location.pathname === item.path
+                      ? "text-glow"
+                      : "text-hero-foreground/70"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="px-5 py-2.5 rounded-lg bg-glow/10 border border-glow/30 text-glow text-sm font-medium text-center"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;
