@@ -123,4 +123,8 @@
     backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glow) / 0.1);
   }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }
