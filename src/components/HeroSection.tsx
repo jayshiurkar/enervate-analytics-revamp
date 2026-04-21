@@ -24,12 +24,8 @@ const HeroSection = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-glow/10 border border-glow/20 text-glow text-xs font-medium mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-glow animate-pulse" />
-          Engineering Analytics & Consulting
-        </div>
 
-        <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-hero-foreground leading-tight max-w-4xl mx-auto mb-6">
+        <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-hero-foreground leading-tight max-w-3xl mx-auto mb-6">
           Knowledge that drives{" "}
           <span className="text-gradient">action.</span>
           <br />
@@ -43,8 +39,8 @@ const HeroSection = () => (
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
           <Link
-            to="/contact"
-            className="px-8 py-3.5 rounded-lg bg-glow text-hero-bg font-heading font-semibold text-sm hover:brightness-110 transition-all flex items-center gap-2 glow-border"
+            to="/services"
+            className="px-8 py-3.5 rounded-lg border border-hero-foreground/20 text-hero-foreground/80 font-heading font-semibold text-sm hover:border-hero-foreground/40 hover:text-hero-foreground transition-all flex items-center gap-2"
           >
             Explore Our Services <ArrowRight size={16} />
           </Link>
