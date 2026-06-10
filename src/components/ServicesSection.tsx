@@ -1,126 +1,170 @@
-import { motion } from "framer-motion";
-import { Flame, Zap, Shield, BarChart3, ArrowRight } from "lucide-react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { Flame, Zap, Shield, BarChart3, ArrowUpRight, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import wildfireImg from "@/assets/wildfire-service.jpg";
 import energyImg from "@/assets/energy-service.jpg";
 import safetyImg from "@/assets/safety-service.jpg";
 import technoImg from "@/assets/techno-economic.jpg";
 
-const services = [
+type Service = {
+  icon: LucideIcon;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  anchor: string;
+  tag: string;
+};
+
+const services: Service[] = [
   {
     icon: Flame,
+    number: "01",
     title: "Wildfire Response",
     subtitle: "Evacuation Planning & Risk-Informed Techniques",
-    description:
-      "In an unfortunate wildfire event, every second matters. Our evidence-based analysis helps communities plan evacuations and manage fire risk.",
+    description: "Evidence-based analysis helps communities plan evacuations and manage fire risk when every second matters.",
     image: wildfireImg,
     anchor: "wildfire",
+    tag: "Response modeling",
   },
   {
     icon: Zap,
+    number: "02",
     title: "Next-Generation Energy Systems",
     subtitle: "Feasibility, Design & Integration",
-    description:
-      "Guide your vision from concept to compliant & safe design. We specialize in hydrogen safety and clean energy system evaluations.",
+    description: "Guide new energy systems from concept to compliant, safe, decision-ready design.",
     image: energyImg,
     anchor: "energy",
+    tag: "Hydrogen systems",
   },
   {
     icon: Shield,
+    number: "03",
     title: "Health, Safety & Environmental Impact",
     subtitle: "Assessment & Compliance",
-    description:
-      "Protect your workforce and workspace. Strengthen project approvals and stakeholder trust with tailored insights for your industry.",
+    description: "Protect people, facilities, and approvals with rigorous analysis tailored to each operating context.",
     image: safetyImg,
     anchor: "safety",
+    tag: "Risk intelligence",
   },
   {
     icon: BarChart3,
+    number: "04",
     title: "Techno-Economic Analysis",
     subtitle: "Engineering & Financial Feasibility",
-    description:
-      "Evaluating the economic viability of energy projects with rigorous engineering and financial modeling.",
+    description: "Connect engineering realities with financial outcomes to support confident investment decisions.",
     image: technoImg,
     anchor: "techno",
+    tag: "Decision economics",
   },
 ];
 
+const AnimatedServiceCard = ({ service, index }: { service: Service; index: number }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const spotlight = useMotionTemplate`radial-gradient(460px circle at ${mouseX}px ${mouseY}px, hsl(var(--glow) / 0.16), transparent 58%)`;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 38, rotateX: 4 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.65, delay: index * 0.08 }}
+      onMouseMove={(event) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        mouseX.set(event.clientX - bounds.left);
+        mouseY.set(event.clientY - bounds.top);
+      }}
+      className="group relative overflow-hidden rounded-[1.4rem] border border-glow/10 bg-surface-dark/50"
+    >
+      <motion.div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: spotlight }} />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-glow/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+      <div className="relative grid min-h-[350px] md:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative z-10 flex flex-col p-6 md:p-8">
+          <div className="mb-12 flex items-center justify-between">
+            <span className="font-heading text-xs tracking-[0.2em] text-glow/70">{service.number}</span>
+            <span className="rounded-full border border-glow/15 bg-glow/5 px-3 py-1.5 text-[9px] uppercase tracking-[0.16em] text-hero-foreground/45">
+              {service.tag}
+            </span>
+          </div>
+
+          <div className="mt-auto">
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-glow/20 bg-glow/10 transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-3">
+              <service.icon size={20} className="text-glow" />
+            </div>
+            <h3 className="mb-2 max-w-sm font-heading text-xl font-semibold leading-tight text-hero-foreground md:text-2xl">
+              {service.title}
+            </h3>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.1em] text-glow/70">{service.subtitle}</p>
+            <p className="mb-6 max-w-md text-sm leading-relaxed text-hero-foreground/45">{service.description}</p>
+            <Link to={`/services#${service.anchor}`} className="inline-flex items-center gap-2 text-sm font-medium text-hero-foreground transition-colors hover:text-glow">
+              Explore capability
+              <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative min-h-64 overflow-hidden md:min-h-full">
+          <motion.img
+            src={service.image}
+            alt={service.title}
+            loading="lazy"
+            width={800}
+            height={600}
+            className="absolute inset-0 h-full w-full object-cover opacity-60 grayscale-[20%]"
+            whileHover={{ scale: 1.06 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/25 to-transparent md:bg-gradient-to-r" />
+          <div className="technical-grid absolute inset-0 opacity-20" />
+
+          <motion.div
+            className="absolute inset-y-0 w-px bg-gradient-to-b from-transparent via-glow to-transparent opacity-70"
+            animate={{ left: ["8%", "92%", "8%"] }}
+            transition={{ duration: 7 + index, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <div className="absolute bottom-5 right-5 rounded-xl border border-glow/20 bg-surface-darker/75 px-4 py-3 backdrop-blur-md">
+            <div className="mb-1 flex items-center gap-2 text-[9px] uppercase tracking-[0.18em] text-hero-foreground/40">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              Model active
+            </div>
+            <div className="font-heading text-xs text-hero-foreground">Evidence mapped</div>
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
 const ServicesSection = () => (
-  <section className="section-dark py-24 lg:py-32">
-    <div className="max-w-7xl mx-auto px-6">
+  <section className="section-dark relative overflow-hidden py-24 lg:py-32">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--glow)/0.08),transparent_38%)]" />
+    <div className="relative mx-auto max-w-7xl px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end"
       >
-        <span className="text-glow text-xs font-medium uppercase tracking-widest">
-          What We Do
-        </span>
-        <h2 className="font-heading text-3xl md:text-5xl font-bold text-hero-foreground mt-3">
-          Our <span className="text-gradient">Services</span>
-        </h2>
+        <div>
+          <span className="text-xs font-medium uppercase tracking-[0.22em] text-glow">Capabilities in motion</span>
+          <h2 className="mt-3 max-w-2xl font-heading text-3xl font-semibold tracking-[-0.035em] text-hero-foreground md:text-5xl">
+            Analysis built around the <span className="text-gradient">decision.</span>
+          </h2>
+        </div>
+        <p className="max-w-sm text-sm leading-relaxed text-hero-foreground/42">
+          Move through each capability to see how Enervate turns complex systems into practical, defensible action.
+        </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {services.map((service, i) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group glass-card rounded-2xl overflow-hidden"
-          >
-            <div className="relative h-52 overflow-hidden">
-              <img
-                src={service.image}
-                alt={service.title}
-                loading="lazy"
-                width={800}
-                height={600}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/30 to-transparent" />
-              <div className="absolute top-4 left-4 w-10 h-10 rounded-lg bg-surface-darker/70 backdrop-blur-sm border border-glow/30 flex items-center justify-center">
-                <service.icon size={20} className="text-glow" />
-              </div>
-              <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full border border-glow/20 bg-surface-darker/70 backdrop-blur-sm px-3 py-1.5 text-[9px] uppercase tracking-[0.16em] text-hero-foreground/55">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-glow opacity-70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-glow" />
-                </span>
-                Analysis active
-              </div>
-              <motion.div
-                className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-glow to-transparent opacity-70"
-                animate={{ top: ["12%", "88%", "12%"] }}
-                transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-heading text-xl font-bold text-hero-foreground mb-1">
-                    {service.title}
-                  </h3>
-                  <p className="text-glow text-sm font-medium mb-3">
-                    {service.subtitle}
-                  </p>
-                </div>
-              </div>
-              <p className="text-hero-foreground/50 text-sm leading-relaxed mb-5">
-                {service.description}
-              </p>
-              <Link
-                to={`/services#${service.anchor}`}
-                className="inline-flex items-center gap-2 text-glow text-sm font-medium hover:gap-3 transition-all"
-              >
-                Explore capability <ArrowRight size={16} />
-              </Link>
-            </div>
-          </motion.div>
-        ))}
+      <div className="grid gap-5">
+        {services.map((service, index) => <AnimatedServiceCard key={service.title} service={service} index={index} />)}
       </div>
     </div>
   </section>
