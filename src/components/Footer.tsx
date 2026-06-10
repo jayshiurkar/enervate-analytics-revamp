@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/enervate-logo.png";
 
 const Footer = () => (
   <footer className="section-dark border-t border-glow/10">
@@ -7,9 +8,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-glow/20 border border-glow/40 flex items-center justify-center font-heading font-bold text-glow text-lg">
-              EA
-            </div>
+            <img src={logo} alt="Enervate Analytics" className="w-11 h-11 object-contain" />
             <span className="font-heading font-semibold text-hero-foreground text-lg">
               Enervate Analytics
             </span>

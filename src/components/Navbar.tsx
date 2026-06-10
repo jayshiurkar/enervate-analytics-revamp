@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/enervate-logo.png";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -18,9 +19,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-hero-bg/80 border-b border-glow/10">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-lg bg-glow/20 border border-glow/40 flex items-center justify-center font-heading font-bold text-glow text-lg group-hover:bg-glow/30 transition-colors">
-            EA
-          </div>
+          <img src={logo} alt="Enervate Analytics" className="w-11 h-11 object-contain" />
           <span className="font-heading font-semibold text-hero-foreground text-lg tracking-tight">
             Enervate <span className="text-gradient">Analytics</span>
           </span>
@@ -59,6 +58,7 @@ const Navbar = () => {
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-hero-foreground"
+          aria-label={open ? "Close navigation" : "Open navigation"}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>

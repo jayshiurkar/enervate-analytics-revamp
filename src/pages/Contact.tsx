@@ -1,15 +1,17 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const subject = encodeURIComponent(`Project inquiry from ${form.get("name")}`);
+    const body = encodeURIComponent(
+      `Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`,
+    );
+    window.location.href = `mailto:services@enervateanalytics.ca?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -79,56 +81,49 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              {submitted ? (
-                <div className="glass-card rounded-2xl p-10 text-center">
-                  <div className="w-16 h-16 rounded-full bg-glow/20 flex items-center justify-center mx-auto mb-4">
-                    <Send size={24} className="text-glow" />
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-hero-foreground mb-2">Message Sent!</h3>
-                  <p className="text-hero-foreground/50 text-sm">We'll get back to you shortly.</p>
+              <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
+                <div>
+                  <label htmlFor="name" className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Name *</label>
+                  <input
+                    id="name"
+                    name="name"
+                    required
+                    type="text"
+                    className="w-full px-4 py-3 rounded-lg bg-surface-darker border border-hero-foreground/10 text-hero-foreground placeholder:text-hero-foreground/30 focus:outline-none focus:border-glow/40 transition-colors text-sm"
+                    placeholder="Your name"
+                  />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
-                  <div>
-                    <label className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Name *</label>
-                    <input
-                      required
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg bg-surface-darker border border-hero-foreground/10 text-hero-foreground placeholder:text-hero-foreground/30 focus:outline-none focus:border-glow/40 transition-colors text-sm"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Email *</label>
-                    <input
-                      required
-                      type="email"
-                      className="w-full px-4 py-3 rounded-lg bg-surface-darker border border-hero-foreground/10 text-hero-foreground placeholder:text-hero-foreground/30 focus:outline-none focus:border-glow/40 transition-colors text-sm"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Message</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg bg-surface-darker border border-hero-foreground/10 text-hero-foreground placeholder:text-hero-foreground/30 focus:outline-none focus:border-glow/40 transition-colors text-sm resize-none"
-                      placeholder="Tell us what you're looking for..."
-                    />
-                  </div>
-                  <label className="flex items-start gap-2 cursor-pointer">
-                    <input type="checkbox" required className="mt-1 accent-glow" />
-                    <span className="text-hero-foreground/40 text-xs leading-relaxed">
-                      I agree to be contacted and understand I can opt out at any time.
-                    </span>
-                  </label>
-                  <button
-                    type="submit"
-                    className="w-full py-3.5 rounded-lg bg-glow text-hero-bg font-heading font-semibold text-sm hover:brightness-110 transition-all glow-border flex items-center justify-center gap-2"
-                  >
-                    Send Message <Send size={16} />
-                  </button>
-                </form>
-              )}
+                <div>
+                  <label htmlFor="email" className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Email *</label>
+                  <input
+                    id="email"
+                    name="email"
+                    required
+                    type="email"
+                    className="w-full px-4 py-3 rounded-lg bg-surface-darker border border-hero-foreground/10 text-hero-foreground placeholder:text-hero-foreground/30 focus:outline-none focus:border-glow/40 transition-colors text-sm"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Project context</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg bg-surface-darker border border-hero-foreground/10 text-hero-foreground placeholder:text-hero-foreground/30 focus:outline-none focus:border-glow/40 transition-colors text-sm resize-none"
+                    placeholder="What decision or challenge can we help with?"
+                  />
+                </div>
+                <p className="text-hero-foreground/35 text-xs leading-relaxed">
+                  Submitting opens your email application with this inquiry ready to send.
+                </p>
+                <button
+                  type="submit"
+                  className="w-full py-3.5 rounded-lg bg-glow text-hero-bg font-heading font-semibold text-sm hover:brightness-110 transition-all glow-border flex items-center justify-center gap-2"
+                >
+                  Prepare Email <Send size={16} />
+                </button>
+              </form>
             </motion.div>
           </div>
         </div>

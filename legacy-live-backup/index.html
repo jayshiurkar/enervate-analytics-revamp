@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enervate Analytics | Engineering Consulting & Energy Solutions</title>
+    <meta name="description" content="Evidence-based engineering consulting for risk assessment, hydrogen safety, wildfire response, and energy systems in Edmonton, Alberta." />
+    <meta name="author" content="Enervate Analytics" />
+    <meta property="og:title" content="Enervate Analytics | Engineering Consulting" />
+    <meta property="og:description" content="Evidence-based engineering consulting for risk, safety, and energy systems." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/assets/enervate-logo.png" />
+    <style id="enervate-site-overrides">
+      .enervate-brand-text-contrast,
+      .enervate-brand-text-contrast * {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+        -webkit-text-stroke: 0 !important;
+        filter: none !important;
+        font-weight: 700 !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: geometricPrecision;
+      }
+
+      .enervate-service-image-contain {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        background-color: #ffffff !important;
+      }
+
+      .enervate-service-image-frame {
+        background-color: #ffffff !important;
+        overflow: hidden !important;
+      }
+
+      .enervate-hide-content,
+      a[href^="tel:"],
+      a[href*="780-885-4862"],
+      a[href*="7808854862"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .enervate-contact-email-block {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        margin-top: 1.25rem !important;
+        margin-bottom: 1.25rem !important;
+      }
+
+      .enervate-contact-email-icon {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        border-radius: 16px !important;
+        border: 1px solid rgba(80, 130, 190, 0.45) !important;
+        background: rgba(30, 45, 65, 0.75) !important;
+        color: #6ea8ff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.35rem !important;
+        font-weight: 700 !important;
+      }
+
+      .enervate-contact-email-label {
+        color: rgba(255, 255, 255, 0.65) !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        margin-bottom: 0.25rem !important;
+      }
+
+      .enervate-contact-email-link {
+        color: #ffffff !important;
+        font-size: 1.05rem !important;
+        line-height: 1.4 !important;
+        text-decoration: none !important;
+        word-break: break-word !important;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-D9o-qR2T.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D-V4WTKr.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script>
+      (function () {
+        var brandName = "Enervate Analytics";
+        var brandWords = ["Enervate", "Analytics"];
+        var contactEmail = "services@enervateanalytics.ca";
+        var phoneRegex = /(?:\+?\s*1\D*)?780\D*885\D*4862/;
+        var containImageTitles = [
+          "Climate Risk and Adaptation Feasibility Study",
+          "Public Safety Site Risk Assessment and Land-Use Advisory"
+        ];
+
+        function normalizeText(value) {
+          return (value || "").replace(/\s+/g, " ").trim();
+        }
+
+        function normalizeLower(value) {
+          return normalizeText(value).toLowerCase();
+        }
+
+        function hideNode(element) {
+          if (!element || element === document.body || element === document.documentElement || element.id === "root") return;
+          element.classList.add("enervate-hide-content");
+          element.style.setProperty("display", "none", "important");
+          element.style.setProperty("visibility", "hidden", "important");
+          element.style.setProperty("opacity", "0", "important");
+          element.style.setProperty("pointer-events", "none", "important");
+        }
+
+        function forceSharpWhiteBrandText(element) {
+          element.classList.add("enervate-brand-text-contrast");
+          element.style.setProperty("color", "#ffffff", "important");
+          element.style.setProperty("opacity", "1", "important");
+          element.style.setProperty("text-shadow", "none", "important");
+          element.style.setProperty("-webkit-text-stroke", "0", "important");
+          element.style.setProperty("filter", "none", "important");
+          element.style.setProperty("font-weight", "700", "important");
+          element.style.setProperty("-webkit-font-smoothing", "antialiased");
+          element.style.setProperty("-moz-osx-font-smoothing", "grayscale");
+          element.style.setProperty("text-rendering", "geometricPrecision");
+        }
+
+        function copyReadableBrandStyle(source, target) {
+          if (!source || !target) return;
+          var style = window.getComputedStyle(source);
+          ["font-family", "font-size", "font-style", "font-weight", "line-height", "letter-spacing", "text-transform"].forEach(function (property) {
+            target.style.setProperty(property, style.getPropertyValue(property), "important");
+          });
+          forceSharpWhiteBrandText(target);
+        }
+
+        function improveLogoVisibility() {
+          Array.prototype.slice.call(document.querySelectorAll("header, nav")).forEach(function (container) {
+            var textElements = Array.prototype.slice.call(container.querySelectorAll("a, span, div, p, strong, h1, h2, h3"));
+            var enervateElements = [];
+            var analyticsElements = [];
+
+            textElements.forEach(function (element) {
+              var text = normalizeText(element.textContent);
+              if (text === brandName || (text.indexOf(brandName) !== -1 && text.length <= brandName.length + 10) || brandWords.indexOf(text) !== -1) {
+                forceSharpWhiteBrandText(element);
+              }
+              if (text === "Enervate") enervateElements.push(element);
+              if (text === "Analytics") analyticsElements.push(element);
+            });
+
+            analyticsElements.forEach(function (analyticsElement) {
+              copyReadableBrandStyle(enervateElements[0], analyticsElement);
+            });
+          });
+        }
+
+        function forceImageContain(image) {
+          image.classList.add("enervate-service-image-contain");
+          image.style.setProperty("width", "100%", "important");
+          image.style.setProperty("height", "100%", "important");
+          image.style.setProperty("object-fit", "contain", "important");
+          image.style.setProperty("object-position", "center center", "important");
+          image.style.setProperty("background-color", "#ffffff", "important");
+          if (image.parentElement) {
+            image.parentElement.classList.add("enervate-service-image-frame");
+            image.parentElement.style.setProperty("background-color", "#ffffff", "important");
+            image.parentElement.style.setProperty("overflow", "hidden", "important");
+          }
+        }
+
+        function findServiceCard(titleElement, title) {
+          var current = titleElement;
+          var steps = 0;
+          while (current && current !== document.body && steps < 8) {
+            if (normalizeText(current.textContent).indexOf(title) !== -1 && current.querySelector && current.querySelector("img, picture, svg, [style*='background-image']")) return current;
+            current = current.parentElement;
+            steps += 1;
+          }
+          return null;
+        }
+
+        function fixSelectedServiceImageCropping() {
+          var searchableElements = Array.prototype.slice.call(document.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, div, a"));
+          containImageTitles.forEach(function (title) {
+            searchableElements.forEach(function (element) {
+              if (normalizeText(element.textContent) !== title) return;
+              var card = findServiceCard(element, title);
+              if (!card) return;
+              Array.prototype.slice.call(card.querySelectorAll("img")).forEach(forceImageContain);
+            });
+          });
+        }
+
+        function hidePublicationContent() {
+          Array.prototype.slice.call(document.querySelectorAll('a[href*="scholar.google"]')).forEach(hideNode);
+
+          Array.prototype.slice.call(document.querySelectorAll("a, button")).forEach(function (element) {
+            var text = normalizeLower(element.textContent);
+            var href = normalizeLower(element.getAttribute("href") || "");
+            if (text === "view publications" || text === "view our publications" || href.indexOf("scholar.google") !== -1) hideNode(element);
+          });
+
+          Array.prototype.slice.call(document.querySelectorAll("h1, h2, h3, h4, h5, h6")).forEach(function (heading) {
+            var text = normalizeLower(heading.textContent);
+            if (text === "peer-reviewed research" || text === "peer reviewed research") {
+              var section = heading.closest && heading.closest("section");
+              hideNode(section || heading.closest("article, div") || heading);
+            }
+          });
+        }
+
+        function findSmallPhoneBlock(element) {
+          var current = element;
+          var best = element;
+          var steps = 0;
+
+          while (current && current.parentElement && current.parentElement !== document.body && current.parentElement.id !== "root" && steps < 5) {
+            var parent = current.parentElement;
+            var text = normalizeText(parent.textContent);
+            var lower = text.toLowerCase();
+            if (!phoneRegex.test(text) && lower.indexOf("phone") === -1) break;
+            if (text.length > 170) break;
+            best = parent;
+            current = parent;
+            steps += 1;
+          }
+
+          return best;
+        }
+
+        function hidePhoneContent() {
+          Array.prototype.slice.call(document.querySelectorAll('a[href^="tel:"], a[href*="780-885-4862"], a[href*="7808854862"]')).forEach(function (link) {
+            hideNode(findSmallPhoneBlock(link));
+          });
+
+          Array.prototype.slice.call(document.querySelectorAll("a, button, p, span, li, div")).forEach(function (element) {
+            var text = normalizeText(element.textContent);
+            var href = normalizeText(element.getAttribute && element.getAttribute("href") || "");
+            if (!phoneRegex.test(text) && !phoneRegex.test(href)) return;
+            if (element.id === "root" || element === document.body) return;
+            if (text.length > 170) return;
+
+            hideNode(findSmallPhoneBlock(element));
+          });
+
+          Array.prototype.slice.call(document.querySelectorAll("p, span, div, li, h1, h2, h3, h4, h5, h6")).forEach(function (element) {
+            var text = normalizeLower(element.textContent);
+            if (text !== "phone" && text !== "phone:") return;
+
+            var current = element;
+            var steps = 0;
+            while (current && current.parentElement && current.parentElement !== document.body && current.parentElement.id !== "root" && steps < 5) {
+              current = current.parentElement;
+              var currentText = normalizeText(current.textContent);
+              if (phoneRegex.test(currentText) && currentText.length < 170) {
+                hideNode(current);
+                break;
+              }
+              steps += 1;
+            }
+          });
+        }
+
+        function createEmailBlock() {
+          var wrapper = document.createElement("div");
+          wrapper.id = "enervate-contact-email-block";
+          wrapper.className = "enervate-contact-email-block";
+
+          var icon = document.createElement("div");
+          icon.className = "enervate-contact-email-icon";
+          icon.textContent = "@";
+
+          var content = document.createElement("div");
+          var label = document.createElement("div");
+          label.className = "enervate-contact-email-label";
+          label.textContent = "Email";
+
+          var link = document.createElement("a");
+          link.className = "enervate-contact-email-link";
+          link.href = "mailto:" + contactEmail;
+          link.textContent = contactEmail;
+
+          content.appendChild(label);
+          content.appendChild(link);
+          wrapper.appendChild(icon);
+          wrapper.appendChild(content);
+          return wrapper;
+        }
+
+        function findContactPageContainer() {
+          var headings = Array.prototype.slice.call(document.querySelectorAll("h1, h2, h3"));
+          for (var i = 0; i < headings.length; i += 1) {
+            var text = normalizeLower(headings[i].textContent);
+            if (text.indexOf("let's discuss") !== -1 || text.indexOf("contact us") !== -1 || text === "contact") {
+              return headings[i].closest("section") || headings[i].closest("div") || headings[i].parentElement;
+            }
+          }
+          return null;
+        }
+
+        function addContactEmail() {
+          if (document.getElementById("enervate-contact-email-block")) return;
+
+          var contactContainer = findContactPageContainer();
+          if (!contactContainer) return;
+
+          var emailBlock = createEmailBlock();
+          var phoneReference = null;
+          Array.prototype.slice.call(contactContainer.querySelectorAll("a, button, p, span, li, div")).some(function (element) {
+            var text = normalizeText(element.textContent);
+            var href = normalizeText(element.getAttribute && element.getAttribute("href") || "");
+            if (phoneRegex.test(text) || phoneRegex.test(href) || normalizeLower(text) === "phone") {
+              phoneReference = findSmallPhoneBlock(element);
+              return true;
+            }
+            return false;
+          });
+
+          if (phoneReference && phoneReference.parentElement) {
+            phoneReference.parentElement.insertBefore(emailBlock, phoneReference);
+          } else {
+            contactContainer.appendChild(emailBlock);
+          }
+        }
+
+        function applySiteFixes() {
+          improveLogoVisibility();
+          fixSelectedServiceImageCropping();
+          hidePublicationContent();
+          addContactEmail();
+          hidePhoneContent();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          applySiteFixes();
+          setTimeout(applySiteFixes, 300);
+          setTimeout(applySiteFixes, 1000);
+          setTimeout(applySiteFixes, 2000);
+          setTimeout(applySiteFixes, 4000);
+        });
+        window.addEventListener("load", applySiteFixes);
+        window.addEventListener("hashchange", function () { setTimeout(applySiteFixes, 300); });
+        window.addEventListener("popstate", function () { setTimeout(applySiteFixes, 300); });
+        document.addEventListener("click", function () { setTimeout(applySiteFixes, 500); });
+      })();
+    </script>
+    <script src="/assets/partners-carousel-placement-fix.js" defer></script>
+  </body>
+</html>
