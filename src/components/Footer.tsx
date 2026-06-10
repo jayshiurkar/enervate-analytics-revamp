@@ -8,7 +8,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={logo} alt="Enervate Analytics" className="w-11 h-11 object-contain" />
+            <img src={logo} alt="Enervate Analytics" className="w-16 h-16 object-contain" />
             <span className="font-heading font-semibold text-hero-foreground text-lg">
               Enervate Analytics
             </span>
@@ -73,6 +73,11 @@ const Footer = () => (
 
       <div className="mt-12 pt-8 border-t border-hero-foreground/10 text-center text-hero-foreground/30 text-xs">
         © {new Date().getFullYear()} Enervate Analytics. All rights reserved.
+        <span className="mx-2">·</span>
+        Animated icons by{" "}
+        <a href="https://www.flaticon.com/animated-icons" target="_blank" rel="noopener noreferrer" className="hover:text-glow">
+          Flaticon / Freepik
+        </a>
       </div>
     </div>
   </footer>

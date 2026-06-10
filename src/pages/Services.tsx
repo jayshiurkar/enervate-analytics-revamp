@@ -1,17 +1,22 @@
 import { motion } from "framer-motion";
-import { Flame, Zap, Shield, BarChart3, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimatedServiceIcon from "@/components/AnimatedServiceIcon";
 import wildfireImg from "@/assets/wildfire-service.jpg";
 import energyImg from "@/assets/energy-service.jpg";
 import safetyImg from "@/assets/safety-service.jpg";
 import technoImg from "@/assets/techno-economic.jpg";
+import wildfireIcon from "@/assets/animated-icons/forest-fire.gif";
+import energyIcon from "@/assets/animated-icons/renewable-energy.gif";
+import safetyIcon from "@/assets/animated-icons/shield.gif";
+import analyticsIcon from "@/assets/animated-icons/analytics.gif";
 
 const services = [
   {
     id: "wildfire",
-    icon: Flame,
+    icon: wildfireIcon,
     title: "Wildfire Response",
     subtitle: "Evacuation Planning & Risk-Informed Techniques",
     description:
@@ -26,7 +31,7 @@ const services = [
   },
   {
     id: "energy",
-    icon: Zap,
+    icon: energyIcon,
     title: "Next-Generation Energy Systems",
     subtitle: "Feasibility, Design & Integration",
     description:
@@ -41,7 +46,7 @@ const services = [
   },
   {
     id: "safety",
-    icon: Shield,
+    icon: safetyIcon,
     title: "Health, Safety & Environmental Impact",
     subtitle: "Assessment & Compliance",
     description:
@@ -56,7 +61,7 @@ const services = [
   },
   {
     id: "techno",
-    icon: BarChart3,
+    icon: analyticsIcon,
     title: "Techno-Economic Analysis",
     subtitle: "Engineering & Financial Feasibility",
     description:
@@ -115,8 +120,8 @@ const Services = () => (
                     className="w-full h-72 lg:h-96 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-hero-bg/80 to-transparent" />
-                  <div className="absolute top-5 left-5 w-12 h-12 rounded-xl bg-glow/20 backdrop-blur-sm border border-glow/30 flex items-center justify-center">
-                    <service.icon size={24} className="text-glow" />
+                  <div className="absolute top-5 left-5">
+                    <AnimatedServiceIcon src={service.icon} alt={`${service.title} animated icon`} size="lg" />
                   </div>
                 </div>
               </div>

@@ -1,13 +1,18 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Flame, Zap, Shield, BarChart3, ArrowUpRight, type LucideIcon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnimatedServiceIcon from "@/components/AnimatedServiceIcon";
 import wildfireImg from "@/assets/wildfire-service.jpg";
 import energyImg from "@/assets/energy-service.jpg";
 import safetyImg from "@/assets/safety-service.jpg";
 import technoImg from "@/assets/techno-economic.jpg";
+import wildfireIcon from "@/assets/animated-icons/forest-fire.gif";
+import energyIcon from "@/assets/animated-icons/renewable-energy.gif";
+import safetyIcon from "@/assets/animated-icons/shield.gif";
+import analyticsIcon from "@/assets/animated-icons/analytics.gif";
 
 type Service = {
-  icon: LucideIcon;
+  icon: string;
   number: string;
   title: string;
   subtitle: string;
@@ -19,7 +24,7 @@ type Service = {
 
 const services: Service[] = [
   {
-    icon: Flame,
+    icon: wildfireIcon,
     number: "01",
     title: "Wildfire Response",
     subtitle: "Evacuation Planning & Risk-Informed Techniques",
@@ -29,7 +34,7 @@ const services: Service[] = [
     tag: "Response modeling",
   },
   {
-    icon: Zap,
+    icon: energyIcon,
     number: "02",
     title: "Next-Generation Energy Systems",
     subtitle: "Feasibility, Design & Integration",
@@ -39,7 +44,7 @@ const services: Service[] = [
     tag: "Hydrogen systems",
   },
   {
-    icon: Shield,
+    icon: safetyIcon,
     number: "03",
     title: "Health, Safety & Environmental Impact",
     subtitle: "Assessment & Compliance",
@@ -49,7 +54,7 @@ const services: Service[] = [
     tag: "Risk intelligence",
   },
   {
-    icon: BarChart3,
+    icon: analyticsIcon,
     number: "04",
     title: "Techno-Economic Analysis",
     subtitle: "Engineering & Financial Feasibility",
@@ -91,8 +96,8 @@ const AnimatedServiceCard = ({ service, index }: { service: Service; index: numb
           </div>
 
           <div className="mt-auto">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-glow/20 bg-glow/10 transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-3">
-              <service.icon size={20} className="text-glow" />
+            <div className="mb-4 transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-3">
+              <AnimatedServiceIcon src={service.icon} alt={`${service.title} animated icon`} />
             </div>
             <h3 className="mb-2 max-w-sm font-heading text-xl font-semibold leading-tight text-hero-foreground md:text-2xl">
               {service.title}
