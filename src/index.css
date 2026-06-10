@@ -36,12 +36,12 @@
 
     --radius: 0.75rem;
 
-    --hero-bg: 220 25% 8%;
-    --hero-foreground: 0 0% 98%;
-    --glow: 216 38% 53%;
-    --glow-muted: 216 25% 35%;
-    --surface-dark: 220 25% 12%;
-    --surface-darker: 220 25% 6%;
+    --hero-bg: 210 40% 98%;
+    --hero-foreground: 218 42% 13%;
+    --glow: 211 72% 48%;
+    --glow-muted: 211 40% 72%;
+    --surface-dark: 0 0% 100%;
+    --surface-darker: 210 32% 95%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -120,9 +120,10 @@
   }
 
   .glass-card {
-    background: hsl(var(--surface-dark) / 0.6);
+    background: hsl(var(--surface-dark) / 0.78);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--glow) / 0.1);
+    border: 1px solid hsl(var(--glow) / 0.14);
+    box-shadow: 0 20px 60px -45px hsl(var(--glow) / 0.5);
   }
 
   .perspective-1000 {
