@@ -85,6 +85,18 @@ const ServicesSection = () => (
               <div className="absolute top-4 left-4 w-10 h-10 rounded-lg bg-surface-darker/70 backdrop-blur-sm border border-glow/30 flex items-center justify-center">
                 <service.icon size={20} className="text-glow" />
               </div>
+              <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full border border-glow/20 bg-surface-darker/70 backdrop-blur-sm px-3 py-1.5 text-[9px] uppercase tracking-[0.16em] text-hero-foreground/55">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-glow opacity-70" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-glow" />
+                </span>
+                Analysis active
+              </div>
+              <motion.div
+                className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-glow to-transparent opacity-70"
+                animate={{ top: ["12%", "88%", "12%"] }}
+                transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut" }}
+              />
             </div>
             <div className="p-6">
               <div className="flex items-start justify-between gap-4">

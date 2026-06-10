@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import SystemsVisual from "@/components/SystemsVisual";
+import MolecularField from "@/components/MolecularField";
 
 const stats = [
   { value: "50+", label: "Assessments Delivered" },
@@ -17,6 +18,7 @@ const HeroSection = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-hero-bg/90 via-hero-bg/85 to-hero-bg" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_45%,hsl(var(--glow)/0.14),transparent_36%)]" />
       <div className="technical-grid absolute inset-0 opacity-40" />
+      <MolecularField />
     </div>
 
     <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16 w-full">

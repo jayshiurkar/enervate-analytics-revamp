@@ -4,11 +4,13 @@ import ServicesSection from "@/components/ServicesSection";
 import PublicationsSection from "@/components/PublicationsSection";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
+import ChemicalProcessSection from "@/components/ChemicalProcessSection";
 
 const Index = () => (
   <div className="min-h-screen bg-hero-bg">
     <Navbar />
     <HeroSection />
+    <ChemicalProcessSection />
     <ServicesSection />
     <PublicationsSection />
     <ContactCTA />
