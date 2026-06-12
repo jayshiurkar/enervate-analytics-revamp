@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { Activity, Atom, Gauge, Waves } from "lucide-react";
+import { Atom, ShieldCheck, TrendingUp, Waves } from "lucide-react";
+import { EASE_OUT } from "@/lib/motion";
 
 const signals = [
-  { icon: Gauge, label: "Pressure", value: "Stable", detail: "24.2 bar" },
-  { icon: Waves, label: "Flow", value: "Optimized", detail: "88.4 kg/s" },
-  { icon: Activity, label: "Risk state", value: "Monitored", detail: "Within limits" },
+  { icon: Waves, label: "Process behavior", value: "Flow, heat & reaction modeling" },
+  { icon: ShieldCheck, label: "Safety barriers", value: "Hazard & consequence analysis" },
+  { icon: TrendingUp, label: "Economic outcomes", value: "Cost & feasibility trade-offs" },
 ];
 
 const ChemicalProcessSection = () => (
@@ -37,17 +38,16 @@ const ChemicalProcessSection = () => (
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.15 + index * 0.1 }}
-                className="glass-card rounded-xl px-4 py-3 flex items-center gap-4"
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.15 + index * 0.1 }}
+                className="glass-card hover-lift rounded-xl px-4 py-3.5 flex items-center gap-4 hover:border-glow/30"
               >
-                <div className="h-9 w-9 rounded-lg bg-glow/10 border border-glow/20 flex items-center justify-center">
+                <div className="h-9 w-9 shrink-0 rounded-lg bg-glow/10 border border-glow/20 flex items-center justify-center">
                   <signal.icon size={17} className="text-glow" />
                 </div>
                 <div className="min-w-0">
                   <div className="text-[10px] uppercase tracking-[0.16em] text-hero-foreground/35">{signal.label}</div>
                   <div className="font-heading text-sm text-hero-foreground">{signal.value}</div>
                 </div>
-                <span className="ml-auto text-xs text-glow/70">{signal.detail}</span>
               </motion.div>
             ))}
           </div>
@@ -143,8 +143,8 @@ const ChemicalProcessSection = () => (
             ))}
           </svg>
           <div className="relative flex items-center justify-between border-t border-glow/10 pt-4 text-[10px] uppercase tracking-[0.18em] text-hero-foreground/35">
-            <span>Dynamic process model</span>
-            <span className="flex items-center gap-2"><i className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live simulation</span>
+            <span>Integrated process view</span>
+            <span>Illustrative schematic</span>
           </div>
         </motion.div>
       </div>

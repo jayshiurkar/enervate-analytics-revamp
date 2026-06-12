@@ -126,20 +126,13 @@ const AnimatedServiceCard = ({ service, index }: { service: Service; index: numb
           <div className="technical-grid absolute inset-0 opacity-20" />
 
           <motion.div
-            className="absolute inset-y-0 w-px bg-gradient-to-b from-transparent via-glow to-transparent opacity-70"
+            className="absolute inset-y-0 w-px bg-gradient-to-b from-transparent via-glow to-transparent opacity-40"
             animate={{ left: ["8%", "92%", "8%"] }}
-            transition={{ duration: 7 + index, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 9 + index, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          <div className="absolute bottom-5 right-5 rounded-xl border border-glow/20 bg-surface-darker/75 px-4 py-3 backdrop-blur-md">
-            <div className="mb-1 flex items-center gap-2 text-[9px] uppercase tracking-[0.18em] text-hero-foreground/40">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              </span>
-              Model active
-            </div>
-            <div className="font-heading text-xs text-hero-foreground">Evidence mapped</div>
+          <div className="absolute bottom-5 right-5 rounded-lg border border-glow/15 bg-surface-darker/70 px-4 py-2 backdrop-blur-md">
+            <div className="font-heading text-xs tracking-wide text-hero-foreground/80">{service.subtitle}</div>
           </div>
         </div>
       </div>
