@@ -92,21 +92,35 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background: hsl(var(--glow) / 0.18);
+    color: hsl(var(--hero-foreground));
   }
 }
 
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--glow)), hsl(215 68% 56%));
+    background-image: linear-gradient(120deg, hsl(var(--glow)), hsl(198 78% 48%) 50%, hsl(var(--glow)));
+    background-size: 200% auto;
+    animation: gradient-pan 8s ease infinite;
   }
 
   .glow-border {
@@ -149,12 +163,52 @@
   .partner-track:hover {
     animation-play-state: paused;
   }
+
+  /* Soft radial vignette so embedded media dissolves into the page
+     instead of showing a hard rectangular edge. */
+  .model-vignette {
+    -webkit-mask-image: radial-gradient(70% 62% at 56% 46%, #000 42%, transparent 82%);
+    mask-image: radial-gradient(70% 62% at 56% 46%, #000 42%, transparent 82%);
+  }
+
+  .hover-lift {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(hsl(var(--glow)), hsl(var(--glow)));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1.5px;
+  }
 }
 
 @keyframes partner-scroll {
   to {
     transform: translateX(calc(-50% - 0.625rem));
   }
+}
+
+@keyframes gradient-pan {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes model-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

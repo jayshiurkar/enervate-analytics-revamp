@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const highlights = [
-  { icon: Microscope, title: "Research-Driven", desc: "Peer-reviewed publications in leading energy and safety journals." },
+  { icon: Microscope, title: "Research-Driven", desc: "Rigorous, peer-reviewed methods grounded in leading energy and safety science." },
   { icon: Users, title: "Expert Team", desc: "Seasoned engineers specializing in hydrogen safety and energy systems." },
   { icon: Award, title: "50+ Assessments", desc: "Proven track record delivering complex engineering analyses." },
 ];
@@ -38,22 +38,24 @@ const About = () => (
           </Link>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-6 mt-20"
-        >
-          {highlights.map((item) => (
-            <div key={item.title} className="glass-card rounded-2xl p-8">
-              <div className="w-12 h-12 rounded-xl bg-glow/10 border border-glow/20 flex items-center justify-center mb-5">
+        <div className="grid md:grid-cols-3 gap-6 mt-20">
+          {highlights.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.12 }}
+              className="group glass-card hover-lift rounded-2xl p-8 hover:border-glow/30"
+            >
+              <div className="w-12 h-12 rounded-xl bg-glow/10 border border-glow/20 flex items-center justify-center mb-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
                 <item.icon size={22} className="text-glow" />
               </div>
               <h3 className="font-heading text-lg font-bold text-hero-foreground mb-2">{item.title}</h3>
               <p className="text-hero-foreground/50 text-sm leading-relaxed">{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
     <Footer />

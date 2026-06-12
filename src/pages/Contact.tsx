@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -39,15 +39,6 @@ const Contact = () => {
               </p>
 
               <div className="flex flex-col gap-6">
-                <a href="tel:7808854862" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-glow/10 border border-glow/20 flex items-center justify-center group-hover:bg-glow/20 transition-colors">
-                    <Phone size={18} className="text-glow" />
-                  </div>
-                  <div>
-                    <div className="text-hero-foreground/40 text-xs uppercase tracking-wider">Phone</div>
-                    <div className="text-hero-foreground font-medium">+1 780-885-4862</div>
-                  </div>
-                </a>
                 <a href="mailto:services@enervateanalytics.ca" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl bg-glow/10 border border-glow/20 flex items-center justify-center group-hover:bg-glow/20 transition-colors">
                     <Mail size={18} className="text-glow" />

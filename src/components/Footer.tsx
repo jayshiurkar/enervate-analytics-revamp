@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import logo from "@/assets/enervate-logo.png";
 
 const Footer = () => (
@@ -28,7 +28,6 @@ const Footer = () => (
               { label: "Services", path: "/services" },
               { label: "About Us", path: "/about" },
               { label: "Contact", path: "/contact" },
-              { label: "Publications", href: "https://scholar.google.com/citations?user=eUUXQ80AAAAJ&hl=en" },
             ].map((item) =>
               "href" in item ? (
                 <a
@@ -58,9 +57,6 @@ const Footer = () => (
             Contact
           </h4>
           <div className="flex flex-col gap-3 text-sm text-hero-foreground/50">
-            <a href="tel:7808854862" className="flex items-center gap-2 hover:text-glow transition-colors">
-              <Phone size={14} /> +1 780-885-4862
-            </a>
             <a href="mailto:services@enervateanalytics.ca" className="flex items-center gap-2 hover:text-glow transition-colors">
               <Mail size={14} /> services@enervateanalytics.ca
             </a>
