@@ -112,14 +112,16 @@ const Services = () => (
               }`}
             >
               <div className={`${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="relative rounded-2xl overflow-hidden">
+                <div className="glass-card group relative rounded-2xl overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
                     loading="lazy"
-                    className="w-full h-72 lg:h-96 object-cover"
+                    className="w-full h-72 lg:h-96 object-cover opacity-95 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-hero-bg/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/85 via-transparent to-surface-dark/5" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-surface-dark/20 via-transparent to-surface-dark/5" />
+                  <div className="technical-grid absolute inset-0 opacity-20 pointer-events-none" />
                   <div className="absolute top-5 left-5">
                     <AnimatedServiceIcon src={service.icon} alt={`${service.title} animated icon`} size="lg" />
                   </div>

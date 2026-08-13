@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import MolecularField from "@/components/MolecularField";
 import CountUp from "@/components/CountUp";
 import { EASE_OUT } from "@/lib/motion";
+import hydrogenSystemVisual from "@/assets/hero/integrated-hydrogen-system.jpg";
 
 const stats = [
   { value: 50, suffix: "+", label: "Assessments Delivered" },
@@ -28,7 +29,7 @@ const HeroSection = () => {
 
   const modelY = useTransform(smooth, [0, 1], ["0%", "26%"]);
   const modelScale = useTransform(smooth, [0, 0.65, 1], [1.06, 0.94, 0.82]);
-  const modelOpacity = useTransform(smooth, [0, 0.8, 1], [0.85, 0.55, 0.12]);
+  const modelOpacity = useTransform(smooth, [0, 0.8, 1], [0.98, 0.64, 0.12]);
   const contentY = useTransform(smooth, [0, 1], ["0%", "14%"]);
   const contentOpacity = useTransform(smooth, [0, 0.72, 1], [1, 0.78, 0]);
   const ringRotate = useTransform(smooth, [0, 1], [0, 90]);
@@ -43,7 +44,7 @@ const HeroSection = () => {
 
         <motion.div
           style={{ y: modelY, scale: modelScale, opacity: modelOpacity }}
-          className="absolute -right-[6%] top-[3%] hidden h-[94%] w-[66%] origin-center md:block"
+          className="absolute -right-[7%] top-[3%] hidden h-[94%] w-[68%] origin-center md:block"
         >
           {/* Soft luminous bed behind the model so it reads as lit, not pasted on. */}
           <div className="absolute left-[12%] right-[6%] top-[10%] bottom-[12%] rounded-[46%] bg-[radial-gradient(circle_at_50%_45%,hsl(var(--glow)/0.16),hsl(0_0%_100%/0.55)_38%,transparent_72%)] blur-2xl" />
@@ -53,13 +54,12 @@ const HeroSection = () => {
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
           >
-            <iframe
-              title="Animated hydrogen production system"
-              className="pointer-events-none absolute inset-0 h-full w-full scale-[1.2] mix-blend-multiply"
-              src="https://sketchfab.com/models/be71ed54e6674692845cbac18ef54bce/embed?autostart=1&preload=1&ui_theme=light&ui_infos=0&ui_help=0&ui_inspector=0&ui_settings=0&ui_controls=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0"
-              allow="autoplay; fullscreen; xr-spatial-tracking"
-              tabIndex={-1}
+            <img
+              src={hydrogenSystemVisual}
+              alt=""
               aria-hidden="true"
+              loading="eager"
+              className="pointer-events-none absolute inset-0 h-full w-full scale-[1.08] object-contain object-center mix-blend-multiply"
             />
           </motion.div>
 
@@ -146,14 +146,6 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      <a
-        href="https://sketchfab.com/3d-models/creo-hydrogen-hub-15-be71ed54e6674692845cbac18ef54bce"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute bottom-7 right-7 z-20 hidden items-center gap-2 text-[9px] uppercase tracking-[0.15em] text-hero-foreground/35 transition-colors hover:text-glow md:flex"
-      >
-        3D model by Creo / kcmedia <ExternalLink size={11} />
-      </a>
     </section>
   );
 };

@@ -116,13 +116,14 @@ const AnimatedServiceCard = ({ service, index }: { service: Service; index: numb
             src={service.image}
             alt={service.title}
             loading="lazy"
-            width={800}
-            height={600}
-            className="absolute inset-0 h-full w-full object-cover opacity-60 grayscale-[20%]"
+            width={1536}
+            height={1024}
+            className="absolute inset-0 h-full w-full object-cover opacity-90 saturate-[0.9] mix-blend-multiply"
             whileHover={{ scale: 1.06 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/25 to-transparent md:bg-gradient-to-r" />
+          <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/25 via-transparent to-surface-dark/5" />
           <div className="technical-grid absolute inset-0 opacity-20" />
 
           <motion.div
