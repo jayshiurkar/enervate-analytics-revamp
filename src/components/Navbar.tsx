@@ -7,6 +7,7 @@ import logo from "@/assets/enervate-logo.png";
 const navItems = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
+  { label: "Projects", path: "/projects" },
   { label: "About Us", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
