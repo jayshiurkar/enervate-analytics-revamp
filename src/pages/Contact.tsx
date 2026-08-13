@@ -78,7 +78,7 @@ const Contact = () => {
               >
                 <input type="hidden" name="_subject" value="New Enervate Analytics website inquiry" />
                 <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_next" value="https://www.enervateanalytics.ca/#/contact?sent=1" />
+                <input type="hidden" name="_next" value="https://www.enervateanalytics.ca/contact?sent=1" />
                 <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
                 <div>
                   <label htmlFor="name" className="text-hero-foreground/60 text-sm font-medium mb-1.5 block">Name *</label>
