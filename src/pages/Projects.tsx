@@ -5,6 +5,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import healthcareHydrogenImg from "@/assets/projects/healthcare-hydrogen-integration.jpg";
+import industrialHydrogenImg from "@/assets/projects/industrial-hydrogen-risk.jpg";
+import hydrogenStorageImg from "@/assets/projects/hydrogen-storage-escalation.jpg";
 
 type Project = {
   number: string;
@@ -15,6 +18,8 @@ type Project = {
   scope: string[];
   services: string[];
   icon: LucideIcon;
+  image: string;
+  imageAlt: string;
 };
 
 const projects: Project[] = [
@@ -39,6 +44,8 @@ const projects: Project[] = [
       "Decarbonization Strategy",
     ],
     icon: Hospital,
+    image: healthcareHydrogenImg,
+    imageAlt: "Technical visualization of hydrogen and clean-energy systems integrated with a healthcare campus",
   },
   {
     number: "02",
@@ -59,6 +66,8 @@ const projects: Project[] = [
       "Regulatory Gap Assessment",
     ],
     icon: Factory,
+    image: industrialHydrogenImg,
+    imageAlt: "Technical visualization of hydrogen risk modelling for mining and industrial equipment",
   },
   {
     number: "03",
@@ -79,6 +88,8 @@ const projects: Project[] = [
       "Risk-Informed Siting",
     ],
     icon: ShieldCheck,
+    image: hydrogenStorageImg,
+    imageAlt: "Technical visualization of hydrogen storage, detection, and thermal risk zones",
   },
 ];
 
@@ -104,7 +115,7 @@ const Projects = () => (
             variants={fadeUp}
             className="font-heading text-4xl md:text-6xl font-bold text-hero-foreground mt-4 max-w-3xl"
           >
-            Selected <span className="text-gradient">Projects</span>
+            Projects <span className="text-gradient">Delivered</span>
           </motion.h1>
           <motion.p variants={fadeUp} className="text-hero-foreground/60 text-lg leading-relaxed mt-6 max-w-2xl">
             Engineering studies that turn complex energy, safety, and infrastructure questions into practical decisions.
@@ -131,57 +142,72 @@ const Projects = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.65, delay: index * 0.06 }}
-                className="glass-card hover-lift relative overflow-hidden rounded-2xl p-7 md:p-10"
+                className="glass-card hover-lift group relative overflow-hidden rounded-2xl"
               >
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-glow/60 via-glow/15 to-transparent" />
-                <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-9 lg:gap-14">
-                  <div>
-                    <div className="flex items-start justify-between gap-5 mb-7">
-                      <div className="w-12 h-12 rounded-xl bg-glow/[0.08] border border-glow/15 flex items-center justify-center text-glow">
-                        <Icon size={23} strokeWidth={1.6} />
-                      </div>
-                      <span className="font-heading text-4xl font-light text-glow/20">{project.number}</span>
-                    </div>
+                <div className="absolute top-0 left-0 z-20 w-full h-px bg-gradient-to-r from-glow/60 via-glow/15 to-transparent" />
 
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {project.sectors.map((sector) => (
-                        <span
-                          key={sector}
-                          className="px-3 py-1 rounded-full bg-glow/[0.06] border border-glow/10 text-glow text-[11px] font-medium uppercase tracking-wider"
-                        >
-                          {sector}
-                        </span>
-                      ))}
-                    </div>
+                <div className="relative h-60 md:h-72 overflow-hidden bg-surface-dark">
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    className="absolute inset-y-0 right-0 h-full w-[92%] md:w-[74%] object-cover object-center opacity-95 transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/65 md:via-surface-dark/35 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface-dark via-surface-dark/70 to-transparent" />
+                  <div className="technical-grid absolute inset-0 opacity-25 pointer-events-none" />
 
-                    <h2 className="font-heading text-2xl md:text-3xl font-semibold text-hero-foreground leading-tight">
-                      {project.title}
-                    </h2>
-                    <p className="text-glow/80 text-sm font-medium mt-3">{project.location}</p>
-                    <p className="text-hero-foreground/58 text-[15px] leading-relaxed mt-5">
-                      {project.summary}
-                    </p>
+                  <div className="absolute top-7 left-7 md:top-9 md:left-10 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-white/80 backdrop-blur-md border border-glow/15 shadow-sm flex items-center justify-center text-glow">
+                      <Icon size={23} strokeWidth={1.6} />
+                    </div>
+                    <span className="font-heading text-3xl font-light text-glow/35">{project.number}</span>
                   </div>
+                </div>
 
-                  <div className="lg:border-l lg:border-glow/10 lg:pl-12">
-                    <p className="text-hero-foreground/40 text-xs font-medium uppercase tracking-[0.18em] mb-5">
-                      Project Focus
-                    </p>
-                    <ul className="space-y-4">
-                      {project.scope.map((item) => (
-                        <li key={item} className="flex items-start gap-3 text-hero-foreground/60 text-sm leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-glow mt-2 flex-none" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                <div className="relative z-10 -mt-12 bg-gradient-to-b from-surface-dark/95 via-surface-dark to-surface-dark px-7 pt-5 pb-7 md:px-10 md:pt-6 md:pb-10">
+                  <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-9 lg:gap-14">
+                    <div>
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {project.sectors.map((sector) => (
+                          <span
+                            key={sector}
+                            className="px-3 py-1 rounded-full bg-glow/[0.06] border border-glow/10 text-glow text-[11px] font-medium uppercase tracking-wider"
+                          >
+                            {sector}
+                          </span>
+                        ))}
+                      </div>
 
-                    <div className="flex flex-wrap gap-x-4 gap-y-2 mt-7 pt-6 border-t border-glow/10">
-                      {project.services.map((service) => (
-                        <span key={service} className="text-hero-foreground/42 text-xs">
-                          {service}
-                        </span>
-                      ))}
+                      <h2 className="font-heading text-2xl md:text-3xl font-semibold text-hero-foreground leading-tight">
+                        {project.title}
+                      </h2>
+                      <p className="text-glow/80 text-sm font-medium mt-3">{project.location}</p>
+                      <p className="text-hero-foreground/58 text-[15px] leading-relaxed mt-5">
+                        {project.summary}
+                      </p>
+                    </div>
+
+                    <div className="lg:border-l lg:border-glow/10 lg:pl-12">
+                      <p className="text-hero-foreground/40 text-xs font-medium uppercase tracking-[0.18em] mb-5">
+                        Project Focus
+                      </p>
+                      <ul className="space-y-4">
+                        {project.scope.map((item) => (
+                          <li key={item} className="flex items-start gap-3 text-hero-foreground/60 text-sm leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-glow mt-2 flex-none" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-x-4 gap-y-2 mt-7 pt-6 border-t border-glow/10">
+                        {project.services.map((service) => (
+                          <span key={service} className="text-hero-foreground/42 text-xs">
+                            {service}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
